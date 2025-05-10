@@ -38,7 +38,7 @@ on:
         KERNELSU_TAG:
           description: 'Choose KernelSU branch or tag'
           required: false
-          default: "b766b98513b5a7eb33bc1c4a76b5702bf1288f07"
+          default: "1d258196b1abdeec0437c0c5f0c748e05ef61300"
           type: string
 
 jobs:
@@ -94,7 +94,7 @@ jobs:
         if: github.event.inputs.KERNELSU_CONFIG == 'true'
         run: |
           cd $GITHUB_WORKSPACE/kernel
-          curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s "${{ github.event.inputs.KERNELSU_TAG }}"
+          curl -LSs "https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next-susfs/kernel/setup.sh" | bash -s next-susfs "${{ github.event.inputs.KERNELSU_TAG }}"
           scripts/config --file "arch/arm64/configs/${{ github.event.inputs.KERNEL_DEFCONFIG }}" -e MODULES -e KPROBES -e HAVE_KPROBES -e KPROBE_EVENTS
 
       - name: Make kernel
